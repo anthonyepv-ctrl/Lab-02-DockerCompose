@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  api01:
+    container_name: api01
+    build: ./api
+    environment:
+      MESSAGE: "Hola soy Anthony Pita"
+    ports:
+      - "3000:3000"
+  
+  api02:
+    container_name: api02
+    build: ./api
+    environment:
+      MESSAGE: "Me gusta muchos los videojuegos y el futbol" 
+    ports:
+      - "3001:3000"
+
+  api03:
+    container_name: api03
+    build: ./api
+    environment:
+      MESSAGE: "Como estudiante espero aprender mucho en el curso de Infraestructura" 
+    ports:
+      - "3002:3000"
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: mi_base
+      POSTGRES_USER: anthony
+      POSTGRES_PASSWORD: 123APV
