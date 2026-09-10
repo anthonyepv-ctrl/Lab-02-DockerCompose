@@ -56,10 +56,10 @@ Los valores de estas variables se gestionan de forma segura a través del archiv
 
 ### Tipos de Redes en Docker
 
-1. **bridge:** Es la red por defecto para los contenedores que se ejecutan en una misma máquina. Proporciona un aislamiento privado y permite que los contenedores se comuniquen entre sí por su dirección IP o por su nombre de servicio gracias al DNS interno de Docker.
-2. **host:** El contenedor comparte directamente la interfaz de red del host, eliminando el aislamiento de red entre el contenedor y la máquina anfitriona.
-3. **none:** Desactiva completamente la red dentro del contenedor. El contenedor queda sin conexión de red interna ni externa.
-4. **overlay:** Utilizado en entornos multihost o clusters con Docker Swarm, permitiendo comunicar contenedores distribuidos en distintas máquinas físicas o virtuales.
+1. **bridge:** Es la red por defecto para los contenedores que se ejecutan en una misma máquina. 
+2. **host:** El contenedor comparte directamente la interfaz de red del host, sin aislamiento de red.
+3. **none:** El contenedor queda sin conexión de red.
+4. **overlay:** Se utiliza con Docker Swarm, permitiendo comunicar contenedores en distintas máquinas.
 5. **macvlan:** Asigna una dirección IP y una dirección MAC física directamente desde la red del host, haciendo que el contenedor aparezca como un dispositivo físico independiente conectado a la red local.
 
 
@@ -67,7 +67,7 @@ Los valores de estas variables se gestionan de forma segura a través del archiv
 
 Para la persistencia de datos existen los siguientes enfoques:
 
-1. **Volúmenes Gestionados:** Es la forma recomendada por Docker para persistir datos. Son creados y administrados totalmente por Docker dentro de la ruta del host. Son independientes del ciclo de vida del contenedor y garantizan alta velocidad de lectura e escritura.
-2. **Bind Mounts:** Identifica directamente una ruta o archivo específico del sistema de archivos local del host dentro de un directorio del contenedor. Se utilizan comúnmente en entornos de desarrollo para reflejar cambios de código en tiempo real.
-3. **tmpfs Mounts:** Almacenan los datos únicamente en la memoria RAM de la máquina anfitriona. No se escriben en disco, por lo que desaparecen al detener o eliminar el contenedor.
+1. **Volúmenes Gestionados:** Es la forma recomendada por Docker para persistir datos. Son creados y administrados totalmente por Docker dentro de la ruta del host /var/lib/docker/volumes. Es usado por recomendación para compartir datos entre contenedores.
+2. **Bind Mounts:** Se guarda en cualquier ruta del host. Se utilizan comunmente en entornos de desarrollo para reflejar cambios de código en tiempo real.
+3. **tmpfs Mounts:** Almacenan los datos en la memoria RAM del host. No se escriben en disco, por lo que desaparecen al detener o eliminar el contenedor.
 
